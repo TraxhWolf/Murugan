@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Murugan</string>
+    <string name="title_activity_common_ui">CommonUI</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_register_screen">RegisterScreen</string>
+    <string name="title_activity_login_screen">LoginScreen</string>
+    <string name="title_activity_get_muruganed_screen">GetMuruganedScreen</string>
+    <string name="home">HOME</string>
+    <string name="register_button">REGISTER</string>
+    <string name="login_button">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="new_username">New Username</string>
+    <string name="new_password">New Password</string>
+    <string name="login">LOGIN</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="frost_murugan_desc">Frost Murugan</string>
+    <string name="you_got_frost_muruganed_prompt">You got Frost Muruganed</string>
+    <string name="logout_prompt">Logout?</string>
+    <string name="logout_button">LOGOUT</string>
+</resources>
