@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.murugan.R
+import com.example.murugan.ui.components.AppButtons
 import com.example.murugan.ui.ui.theme.MuruganTheme
 
 @Composable
@@ -65,20 +63,10 @@ fun GetMuruganScreen(
                     color = Color.Black
                 )
                 Spacer(modifier = modifier.height(30.dp))
-                Button(
-                    onClick = onLogoutButtonClicked,
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                    modifier = Modifier
-                        .height(40.dp)
-                        .width(270.dp)
-                        .background(color = Color.Black)
-                ) {
-                    Text(
-                        text = stringResource(R.string.logout_button),
-                        color = Color.White,
-                        fontSize = 18.sp
-                    )
-                }
+                AppButtons(
+                    buttonText = stringResource(id = R.string.logout_button),
+                    onClick = onLogoutButtonClicked
+                )
             }
         }
     }
