@@ -10,9 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,7 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.murugan.R
+import com.example.murugan.ui.components.AppButtons
 import com.example.murugan.ui.components.InputFields
+import com.example.murugan.ui.components.PasswordInputField
 import com.example.murugan.ui.ui.theme.MuruganTheme
 
 @Composable
@@ -75,26 +74,18 @@ fun LoginScreen(
                 onValueChange = { userName = it}
             )
             Spacer(modifier = modifier.height(50.dp))
-            InputFields(
-                label = stringResource(R.string.password),
+            PasswordInputField(
+                label = stringResource(id = R.string.password),
                 value = password,
-                onValueChange = { password = it}
+                onValueChange = {
+                    password = it
+                }
             )
             Spacer(modifier = modifier.height(50.dp))
-            Button(
-                onClick = onLoginScreenButtonClicked,
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Black),
-                modifier = Modifier
-                    .height(40.dp)
-                    .width(270.dp)
-                    .background(color = Color.Black)
-            ) {
-                Text(
-                    text = stringResource(R.string.login_button),
-                    color = Color.White,
-                    fontSize = 18.sp
-                )
-            }
+            AppButtons(
+                buttonText = stringResource(id = R.string.login_button),
+                onClick = onLoginScreenButtonClicked
+            )
         }
     }
 }
