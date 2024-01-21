@@ -18,4 +18,5 @@
     <string name="you_got_frost_muruganed_prompt">You got Frost Muruganed</string>
     <string name="logout_prompt">Logout?</string>
     <string name="logout_button">LOGOUT</string>
+    <string name="visibility_icon">visibility icon</string>
 </resources>
