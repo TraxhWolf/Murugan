@@ -41,9 +41,14 @@ import com.example.murugan.R
 fun InputFields(
     modifier: Modifier = Modifier,
     label: String,
-    value: String,
+    //value: String,
     onValueChange: (String) -> Unit
 ) {
+
+    var value by rememberSaveable {
+        mutableStateOf("")
+    }
+
     Column {
         Text(
             text = label,
@@ -55,7 +60,7 @@ fun InputFields(
         )
         TextField(
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = { value = it},
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Next) },
             modifier = modifier
@@ -82,11 +87,14 @@ fun InputFields(
 fun PasswordInputField(
     modifier: Modifier = Modifier,
     label: String,
-    value: String,
+    //value: String,
     onValueChange: (String) -> Unit
 ) {
 
     var passwordVisibility by rememberSaveable { mutableStateOf(false) }
+    var value by rememberSaveable {
+        mutableStateOf("")
+    }
 
     Column {
         Text(
@@ -99,7 +107,7 @@ fun PasswordInputField(
         )
         TextField(
             value = value,
-            onValueChange = onValueChange,
+            onValueChange = {value = it},
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Done) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

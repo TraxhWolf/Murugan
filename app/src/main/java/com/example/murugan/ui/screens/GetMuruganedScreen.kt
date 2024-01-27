@@ -1,4 +1,4 @@
-package com.example.murugan.ui
+package com.example.murugan.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,12 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.murugan.R
+import com.example.murugan.navigation.MuruganNavigation
+import com.example.murugan.navigation.Screen
+import com.example.murugan.navigation.SystemBackButtonHandler
 import com.example.murugan.ui.components.AppButtons
 import com.example.murugan.ui.ui.theme.MuruganTheme
 
 @Composable
 fun GetMuruganScreen(
-    onLogoutButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box{
@@ -65,10 +67,14 @@ fun GetMuruganScreen(
                 Spacer(modifier = modifier.height(30.dp))
                 AppButtons(
                     buttonText = stringResource(id = R.string.logout_button),
-                    onClick = onLogoutButtonClicked
+                    onClick = { MuruganNavigation.navigateTo(Screen.HomeScreen) }
                 )
             }
         }
+    }
+
+    SystemBackButtonHandler {
+        MuruganNavigation.navigateTo(Screen.LoginScreen)
     }
 }
 
@@ -76,8 +82,6 @@ fun GetMuruganScreen(
 @Composable
 fun GetMuruganScreenPreview() {
     MuruganTheme {
-        GetMuruganScreen(
-            onLogoutButtonClicked = {}
-        )
+        GetMuruganScreen()
     }
 }
