@@ -1,4 +1,4 @@
-package com.example.murugan.ui
+package com.example.murugan.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,13 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.murugan.R
+import com.example.murugan.navigation.MuruganNavigation
+import com.example.murugan.navigation.Screen
 import com.example.murugan.ui.components.AppButtons
 import com.example.murugan.ui.ui.theme.MuruganTheme
 
 @Composable
 fun HomeScreen(
-    onLoginButtonClicked: () -> Unit,
-    onRegisterButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -59,12 +59,14 @@ fun HomeScreen(
             Spacer(modifier = modifier.height(70.dp))
             AppButtons(
                 buttonText = stringResource(id = R.string.register_button),
-                onClick = onRegisterButtonClicked
+                onClick = { MuruganNavigation.navigateTo(Screen.RegisterScreen) },
+                isEnabled = true
             )
             Spacer(modifier = modifier.height(50.dp))
             AppButtons(
                 buttonText = stringResource(id = R.string.login_button),
-                onClick = onLoginButtonClicked
+                onClick = { MuruganNavigation.navigateTo(Screen.LoginScreen) },
+                isEnabled = true
             )
         }
     }
@@ -74,9 +76,6 @@ fun HomeScreen(
 @Composable
 fun HomeScreenPreview() {
     MuruganTheme {
-        HomeScreen(
-            onRegisterButtonClicked = {},
-            onLoginButtonClicked = {}
-        )
+        HomeScreen()
     }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516771831404",
+    "project_id": "murugan-83429",
+    "storage_bucket": "murugan-83429.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516771831404:android:b52d5c89520c38ca15c249",
+        "android_client_info": {
+          "package_name": "com.example.murugan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsqYfQpGzrTg0zulCTVFrP8p9PRBglXeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

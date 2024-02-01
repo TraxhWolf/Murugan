@@ -41,9 +41,15 @@ import com.example.murugan.R
 fun InputFields(
     modifier: Modifier = Modifier,
     label: String,
-    value: String,
-    onValueChange: (String) -> Unit
+    //value: String,
+    onValueChange: (String) -> Unit,
+    error: Boolean = false
 ) {
+
+    var textValue by rememberSaveable {
+        mutableStateOf("")
+    }
+
     Column {
         Text(
             text = label,
@@ -54,8 +60,11 @@ fun InputFields(
             )
         )
         TextField(
-            value = value,
-            onValueChange = onValueChange,
+            value = textValue,
+            onValueChange = {
+                textValue = it
+                onValueChange(it)
+            },
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Next) },
             modifier = modifier
@@ -72,7 +81,8 @@ fun InputFields(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 cursorColor = Color.Black
-            )
+            ),
+            isError = !error
         )
     }
 }
@@ -82,11 +92,15 @@ fun InputFields(
 fun PasswordInputField(
     modifier: Modifier = Modifier,
     label: String,
-    value: String,
-    onValueChange: (String) -> Unit
+    //value: String,
+    onValueChange: (String) -> Unit,
+    error: Boolean = false
 ) {
 
     var passwordVisibility by rememberSaveable { mutableStateOf(false) }
+    var textValue by rememberSaveable {
+        mutableStateOf("")
+    }
 
     Column {
         Text(
@@ -98,8 +112,11 @@ fun PasswordInputField(
             )
         )
         TextField(
-            value = value,
-            onValueChange = onValueChange,
+            value = textValue,
+            onValueChange =  {
+                textValue = it
+                onValueChange(it)
+            },
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Done) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -127,7 +144,8 @@ fun PasswordInputField(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 cursorColor = Color.Black
-            )
+            ),
+            isError = !error
         )
     }
 }
@@ -135,7 +153,8 @@ fun PasswordInputField(
 @Composable
 fun AppButtons(
     buttonText: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    isEnabled: Boolean = false
 ) {
     Button(
         onClick = onClick,
@@ -143,7 +162,8 @@ fun AppButtons(
         modifier = Modifier
             .height(40.dp)
             .width(270.dp)
-            .background(color = Color.Black)
+            .background(color = Color.Black),
+        enabled = isEnabled
     ) {
         Text(
             text = buttonText,
