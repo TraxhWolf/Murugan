@@ -30,7 +30,7 @@ import com.example.murugan.ui.ui.theme.MuruganTheme
 
 @Composable
 fun GetMuruganScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Box{
         Image(painter = painterResource(
@@ -67,7 +67,8 @@ fun GetMuruganScreen(
                 Spacer(modifier = modifier.height(30.dp))
                 AppButtons(
                     buttonText = stringResource(id = R.string.logout_button),
-                    onClick = { MuruganNavigation.navigateTo(Screen.HomeScreen) }
+                    onClick = { MuruganNavigation.navigateTo(Screen.HomeScreen) },
+                    isEnabled = true
                 )
             }
         }

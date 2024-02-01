@@ -59,12 +59,14 @@ fun HomeScreen(
             Spacer(modifier = modifier.height(70.dp))
             AppButtons(
                 buttonText = stringResource(id = R.string.register_button),
-                onClick = { MuruganNavigation.navigateTo(Screen.RegisterScreen) }
+                onClick = { MuruganNavigation.navigateTo(Screen.RegisterScreen) },
+                isEnabled = true
             )
             Spacer(modifier = modifier.height(50.dp))
             AppButtons(
                 buttonText = stringResource(id = R.string.login_button),
-                onClick = { MuruganNavigation.navigateTo(Screen.LoginScreen) }
+                onClick = { MuruganNavigation.navigateTo(Screen.LoginScreen) },
+                isEnabled = true
             )
         }
     }

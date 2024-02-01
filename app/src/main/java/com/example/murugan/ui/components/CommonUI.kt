@@ -42,10 +42,11 @@ fun InputFields(
     modifier: Modifier = Modifier,
     label: String,
     //value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    error: Boolean = false
 ) {
 
-    var value by rememberSaveable {
+    var textValue by rememberSaveable {
         mutableStateOf("")
     }
 
@@ -59,8 +60,11 @@ fun InputFields(
             )
         )
         TextField(
-            value = value,
-            onValueChange = { value = it},
+            value = textValue,
+            onValueChange = {
+                textValue = it
+                onValueChange(it)
+            },
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Next) },
             modifier = modifier
@@ -77,7 +81,8 @@ fun InputFields(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 cursorColor = Color.Black
-            )
+            ),
+            isError = !error
         )
     }
 }
@@ -88,11 +93,12 @@ fun PasswordInputField(
     modifier: Modifier = Modifier,
     label: String,
     //value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    error: Boolean = false
 ) {
 
     var passwordVisibility by rememberSaveable { mutableStateOf(false) }
-    var value by rememberSaveable {
+    var textValue by rememberSaveable {
         mutableStateOf("")
     }
 
@@ -106,8 +112,11 @@ fun PasswordInputField(
             )
         )
         TextField(
-            value = value,
-            onValueChange = {value = it},
+            value = textValue,
+            onValueChange =  {
+                textValue = it
+                onValueChange(it)
+            },
             singleLine = true,
             keyboardActions = KeyboardActions { defaultKeyboardAction(ImeAction.Done) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -135,7 +144,8 @@ fun PasswordInputField(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 cursorColor = Color.Black
-            )
+            ),
+            isError = !error
         )
     }
 }
@@ -143,7 +153,8 @@ fun PasswordInputField(
 @Composable
 fun AppButtons(
     buttonText: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    isEnabled: Boolean = false
 ) {
     Button(
         onClick = onClick,
@@ -151,7 +162,8 @@ fun AppButtons(
         modifier = Modifier
             .height(40.dp)
             .width(270.dp)
-            .background(color = Color.Black)
+            .background(color = Color.Black),
+        enabled = isEnabled
     ) {
         Text(
             text = buttonText,
